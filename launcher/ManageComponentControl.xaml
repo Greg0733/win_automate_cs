@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="launcher.ManageComponentControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:launcher"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Background="{x:Bind Background}" CornerRadius="10" Padding="5" RequestedTheme="Light">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NotInstalled" x:FieldModifier="protected">
+                    <VisualState.Setters>
+                        <Setter Target="AutoInstall_Button.Visibility" Value="Visible"/>
+                        <Setter Target="ManualInstall_Button.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                    <!-- This Storyboard is equivalent to the Setter. -->
+                    <!--<Storyboard>
+                        <DoubleAnimation Duration="0" To="1"
+                         Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Opacity"/>
+                    </Storyboard>-->
+                </VisualState>
+                <VisualState x:Name="Installing" x:FieldModifier="protected">
+                    <VisualState.Setters>
+                        <Setter Target="Install_ProgressBar.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Installed" x:FieldModifier="protected">
+                    <VisualState.Setters>
+                        <Setter Target="Configure_Button.Visibility" Value="Visible"/>
+                        <Setter Target="Launch_Button.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                    <!-- This Storyboard is equivalent to the Setter. -->
+                    <!--<Storyboard>
+                        <DoubleAnimation Duration="0" To="1"
+                         Storyboard.TargetName="IndeterminateGlyph" Storyboard.TargetProperty="Opacity"/>
+                    </Storyboard>-->
+                </VisualState>
+                <VisualState x:Name="Error" x:FieldModifier="protected">
+                    <VisualState.Setters>
+                        <Setter Target="Error_Border.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        
+        <Grid Background="{x:Bind Background}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Image Width="50" Height="50" Source="{x:Bind IconPath}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+            <TextBlock Text="{x:Bind Title}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontWeight="Bold"/>
+
+            <Border x:Name="Error_Border" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="Orange" Visibility="Collapsed">
+                <TextBlock Text="Unexpected error, see logs ?" HorizontalAlignment="Center"  FontWeight="Bold"/>
+            </Border>
+            <Button x:Name="AutoInstall_Button" Click="AutoInstall_Clicked" Grid.Row="1" Grid.Column="1" Visibility="Collapsed" HorizontalAlignment="Right">Auto install</Button>
+            <Button x:Name="ManualInstall_Button" Grid.Row="1" Grid.Column="2" IsEnabled="False" Visibility="Collapsed" HorizontalAlignment="Left">Manual install</Button>
+            <Button x:Name="Configure_Button" Click="Configure_Clicked" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="Collapsed">Configure</Button>
+            <Button x:Name="Launch_Button" Click="Launch_Clicked" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Visibility="Collapsed">Launch</Button>
+            <ProgressBar x:Name="Install_ProgressBar" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Maximum="1" Value="{x:Bind ProgressValue, Mode=OneWay}" Visibility="Collapsed" />
+            <!--<Grid x:Name="Progress_Stack" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" ColumnDefinitions="Auto, *" ColumnSpacing="8" Visibility="Collapsed">
+                <TextBlock Grid.Column="0" Text="{x:Bind ProgressText, Mode=OneWay, TargetNullValue=starting...}" />
+                <ProgressBar Grid.Column="1" Maximum="1" Value="{x:Bind ProgressValue, Mode=OneWay}" />
+            </Grid>-->
+            
+            <ToggleSwitch Toggled="Details_Toggled" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" OnContent="Hide details" OffContent="Show details" Style="{StaticResource ToggleSwitchMainStyle}"/>
+        </Grid>
+    </Border>
+</UserControl>

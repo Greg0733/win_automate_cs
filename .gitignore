@@ -1,0 +1,11 @@
+*windowsappruntimeinstall*
+installer/
+bin/
+obj/
+.vs/
+Properties/
+*.appxmanifest
+*.manifest
+*.csproj
+*.user
+*.sln
