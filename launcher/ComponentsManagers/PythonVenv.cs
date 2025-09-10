@@ -18,7 +18,7 @@ namespace launcher.ComponentsManagers
         protected override ComponentManager[] Prerequisites => prerequisitesField;
 
         // 82 lines + 20% for safeguard and installation (only counting downloads currently)
-        protected override int NbSubSteps => 98;
+        protected override int NbSubSteps => 105;
 
         protected override double Weight => 5;
 
