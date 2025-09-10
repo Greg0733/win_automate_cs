@@ -34,7 +34,7 @@ namespace launcher.ArknightsRecruit
         private void FillDefaults()
         {
             Preferences prevPreferences = jsonConfig.preferences;
-            TitleTextBox.Text = prevPreferences.WindowTitleContains;
+			IPTextBox.Text = prevPreferences.EmulatorIP;
             AskBeforeActingToggle.IsOn = prevPreferences.AskBeforeProceeding ?? false;
             RefreshToggle.IsOn = prevPreferences.DoRefresh ?? false;
             RecruitToggle.IsOn = prevPreferences.DoRecruit ?? false;
@@ -85,7 +85,7 @@ namespace launcher.ArknightsRecruit
 
             jsonConfig.SavePreferences(new()
             {
-                WindowTitleContains = TitleTextBox.Text,
+				EmulatorIP = IPTextBox.Text,
                 AskBeforeProceeding = AskBeforeActingToggle.IsOn,
                 DoRefresh = RefreshToggle.IsOn,
                 DoRecruit = RecruitToggle.IsOn,

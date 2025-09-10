@@ -12,7 +12,7 @@
     <Grid RowDefinitions="*, Auto" Background="{StaticResource MainBackground}">
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
             <StackPanel Spacing="10" Background="{StaticResource WhiteBackgroundMain}" VerticalAlignment="Top" Padding="10" RequestedTheme="Light">
-                <TextBox x:Name="TitleTextBox" Header="Title of the emulator window (case insensitive)" PlaceholderText="Bluestacks, LDPlayer, ..."/>
+                <TextBox x:Name="IPTextBox" Header="IP of the emulator window" PlaceholderText="127.0.0.1:5555"/>
                 <ToggleSwitch x:Name="AskBeforeActingToggle" OnContent="Ask before acting" OffContent="Ask before acting" Style="{StaticResource ToggleSwitchMainStyle}"/>
                 <ToggleSwitch x:Name="RefreshToggle" OnContent="Do refresh" OffContent="Do refresh" Style="{StaticResource ToggleSwitchMainStyle}"/>
                 <ToggleSwitch x:Name="RecruitToggle" OnContent="Do recruit" OffContent="Do recruit" Style="{StaticResource ToggleSwitchMainStyle}"/>

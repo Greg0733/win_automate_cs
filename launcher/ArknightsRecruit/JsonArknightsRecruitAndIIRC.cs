@@ -51,8 +51,8 @@ namespace launcher.ArknightsRecruit
     }
     public readonly struct Preferences
     {
-        [JsonPropertyName("window title contains")]
-        public string? WindowTitleContains { get; init; }
+        [JsonPropertyName("emulator IP")]
+        public string? EmulatorIP { get; init; }
         [JsonPropertyName("ask before proceeding")]
         public bool? AskBeforeProceeding { get; init; }
         [JsonPropertyName("do refresh")]

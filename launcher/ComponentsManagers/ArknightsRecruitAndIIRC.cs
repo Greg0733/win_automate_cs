@@ -19,7 +19,7 @@ namespace launcher.ComponentsManagers
         protected override double Weight => 1;
         protected override ComponentManager[] Prerequisites => emptyPrerequisites;
 
-        private static readonly ComponentManager[] corequisitesField = { Supervisor.instance };
+        private static readonly ComponentManager[] corequisitesField = [Supervisor.instance, Adb.instance];
 
         private const string recruitCodeUrl = "https://github.com/Greg0733/win_automate_cs/raw/main/arknights recruitment.zip";
         private const string shortcutName = "arknights auto-recruit";

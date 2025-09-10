@@ -10,14 +10,14 @@ namespace launcher.ComponentsManagers
     internal class Supervisor : ComponentManager
     {
         internal static readonly Supervisor instance = new();
-        protected override ComponentManager[] Corequisites => prerequisitesField;
+        protected override ComponentManager[] Corequisites => corequisitesField;
         protected override ComponentManager[] Prerequisites => emptyPrerequisites;
 
         protected override int NbSubSteps => 2;
 
         protected override double Weight => 1;
 
-        private static readonly ComponentManager[] prerequisitesField = { PythonVenv.instance };
+        private static readonly ComponentManager[] corequisitesField = { PythonVenv.instance };
 
         private static readonly string supervisorDir = appDir;
         private const string supervisorCodeUrl = "https://github.com/Greg0733/win_automate_cs/raw/main/supervisor.zip";
